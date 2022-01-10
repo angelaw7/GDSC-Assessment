@@ -15,8 +15,24 @@ function App() {
       currSum += parseInt(numArray[i]);
     }
     console.log(currSum);
+    showEmoji(currSum);
 
+  }
 
+  const showEmoji = (currSum) => {
+
+    if (currSum < 10) setEmoji("😕");
+    else if (currSum < 40) setEmoji("🙃");
+    else if (currSum < 70) setEmoji("😀");
+    else if (currSum < 100) setEmoji("😂");
+    else setEmoji("🤣");
+
+    setTimeout(clearEmoji, 5000);
+
+  }
+
+  const clearEmoji = () => {
+    setEmoji("");
   }
 
 
@@ -31,7 +47,7 @@ function App() {
 
         </label>
       </form>
-      
+      <p>Welcome! {emoji}</p>
     </div>
   );
 }
