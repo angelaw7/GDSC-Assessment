@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from "react";
-
+import {Row, Col, Container, Table} from 'react-bootstrap';
 
 function App() {
   const [number, setNumber] = useState("");
@@ -27,7 +27,7 @@ function App() {
     else if (currSum < 100) setEmoji("😂");
     else setEmoji("🤣");
 
-    setTimeout(clearEmoji, 5000);
+    setTimeout(clearEmoji, 3000);
 
   }
 
@@ -38,16 +38,57 @@ function App() {
 
   return (
     <div className="App">
+      <Container>
       <h1>Housing App Q1</h1>
       <p>Please enter a list of numbers, separated by one space (e.g., 1 2 3 4 5)</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Number:
-          <input type="text" placeholder="number" name="number" value={number} onChange={e => setNumber(e.target.value)} />
+      <Row> 
+        <Col style={{marginTop: "40px"}}>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Numbers: &nbsp;
+              <input type="text" placeholder="number" name="number" value={number} onChange={e => setNumber(e.target.value)} />
+            </label>
+          </form>
+          <br/>
+          <p>{emoji != "" ? "You are" : ""}</p>
+          <p style={{fontSize:"100px"}}>{emoji}</p>
+        </Col>
 
-        </label>
-      </form>
-      <p>Welcome! {emoji}</p>
+        <Col>
+          <h5>Legend</h5>
+          <Table>
+            <thead>
+              <tr>
+                <th>Emoji</th>
+                <th>Sum range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>😕</td>
+                <td>Less than 10</td>
+              </tr>
+              <tr>
+                <td>🙃</td>
+                <td>10-39</td>
+              </tr>
+              <tr>
+                <td>😀</td>
+                <td>40-69</td>
+              </tr>
+              <tr>
+                <td>😂</td>
+                <td>70-99</td>
+              </tr>
+              <tr>
+                <td>🤣</td>
+                <td>100 or greater</td>
+              </tr>
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+      </Container>
     </div>
   );
 }
