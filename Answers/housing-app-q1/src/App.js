@@ -30,7 +30,8 @@ function App() {
     else if (currSum < 40) setEmoji("🙃");
     else if (currSum < 70) setEmoji("😀");
     else if (currSum < 100) setEmoji("😂");
-    else setEmoji("🤣");
+    else if (currSum > 100) setEmoji("🤣");
+    else setEmoji("");
 
     setTimeout(clearEmoji, 3000);
   }
@@ -55,7 +56,7 @@ function App() {
             <form onSubmit={handleSubmit}>
               <label>
                 Numbers: &nbsp;
-                <input type="text" placeholder="number" name="number" value={number} onChange={e => setNumber(e.target.value)} />
+                <input type="text" placeholder="1 2 3 4 5" name="number" value={number} onChange={e => setNumber(e.target.value)} />
               </label>
             </form>
             <br/>
